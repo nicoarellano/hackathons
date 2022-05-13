@@ -17,8 +17,8 @@ import plotly.express as px
 
 #PAGE CONFIG
 st.set_page_config(
-    page_title= "CDC-Speckle Dashboard",
-    page_icon="🎓"
+    page_title= "NYC - Baby Radish",
+    page_icon="🗽"
 )
 #--------------------------
 
@@ -40,69 +40,69 @@ with header:
 
 with header.expander("About this app🔽", expanded=True):
     st.markdown("""
-    This is a beginner web app developer using Steamlit. 
-    My goal was to understand how to interact with Speckle API using SpecklePy, and analyze what is received an its structure. 
-    This was easy and fun experiment
+    Compare APIs, 3d models, and 3d maps of newyourk blah blah...
     """)
 #--------------------------
 
 #--------------------------
 #INPUTS
 with input:
-    st.subheader("Inputs")
+    st.subheader("Add Layers")
 
     #------------
     #Columns for inputs
-    serverCol, tokenCol = st.columns([1,2])
-    #user input boxes
-    speckleServer = serverCol.text_input("Server URL", "speckle.xyz")
-    # speckleToken = tokenCol.text_input("Speckle Token", "d95342daeb1149e0637513fc714751d7d90d74cbea") CDC_Hackathon
-    # speckleToken = tokenCol.text_input("Speckle Token", "6fa7579fdbbb46d043804df079806169a800b167dc") 
-    speckleToken = tokenCol.text_input("Speckle Token", "54cc9934fda25c598900ab2a6a9228c907c2724d87") #JL
+    # speckleToken = tokenCol.text_input("Speckle Token", "54cc9934fda25c598900ab2a6a9228c907c2724d87") #JL
     #------------
-
-# "https://speckle.xyz/streams/c463c6f6bd/commits/" 
-# + "76d1e6e886" # id commit 1 
-# + "?overlay=" # id commit 2
-# + "fc0f4a68f8" # id commit 3
-# + "," 
-# + "ab73dd1b9f"
 
     #------------
     #CLIENT
-    client = SpeckleClient(host=speckleServer)
+    client = SpeckleClient(host="speckle.xyz")
     #get account from token
-    account = get_account_from_token(speckleToken, speckleServer)
+    account = get_account_from_token("54cc9934fda25c598900ab2a6a9228c907c2724d87", "speckle.xyz")
     #Authenticate
     client.authenticate_with_account(account)
     #------------
 
     #------------
     #Streams list 👇
-    streams = client.stream.list()
-    #Get Stream names
-    streamNames = [s.name for s in streams]
-    #Dropdown for commit selection
-    sName = st.selectbox(label="Select your stream", options=streamNames)
     #Selected Stream ✅
-    stream = client.stream.search(sName)[0]
+    stream = client.stream.search("Hackathons")[0]
+    streamId = "c463c6f6bd"
     #Stream Branches 🌴
-    branches = client.branch.list(stream.id)
+    branches = client.branch.list(streamId)
     #Stream Commits 🏹
-    commits = client.commit.list(stream.id, limit=100)
+    commits = client.commit.list(streamId, limit=100)
 
     #Get Stream names
     commitNames = [c.branchName for c in commits]
     #Dropdown for commit selection
-    cName = st.selectbox(label="Select your commit", options=commitNames)
+    # cName = st.selectbox(label="Add layers", options=commitNames)
+    showBldgs = st.checkbox('Show Buildings 🏢')
+    showRoads = st.checkbox('Show Roads 🛣️')
+    showWater = st.checkbox('Show Water 💧')
+    showTrees = st.checkbox('Show Trees 🌳')
+
+    cId = ""
+    if showBldgs:
+        st.write('Buildings 🏢!')
+        cId = "d4bc744cc2"
+    elif showRoads:
+        st.write('Roads 🛣️!')
+        cId = "fc2c326bee"
+    elif showWater:
+        st.write('Water 💧!')
+        cId = "d2ea061d60"
+    elif showTrees:
+        st.write('Trees 🌳')
+
     #Selected commit ✅
-    for c in commits:
-        if c.branchName == cName:
-            cId = c.id
-            break
+    # for c in commits:
+    #     if c.branchName == cName:
+    #         cId = c.id
+    #         break
     # commit = commits(cName)[0]
     # st.write(cName)
-    st.write(cId)
+    # st.write(cId)
     # st.write(commits)
 
     # st.write(commits)
@@ -117,22 +117,21 @@ def listToMarkdown(list, column):
     return column.markdown(list)
 
 #creates an iframe from commit
-def commit2viewer(stream, cId):
-    embed_src = "https://speckle.xyz/embed?stream=" + stream.id + "&commit=" + cId #+ "&overlay=f19500861c"
+def commit2viewer(cId):
+    if cId == "":
+        embed_src = "https://speckle.xyz/embed?stream=c463c6f6bd&commit=6acb9b670f"
+    else:
+        embed_src = "https://speckle.xyz/embed?stream=c463c6f6bd&commit=6acb9b670f&overlay=" + cId
     return st.components.v1.iframe(src=embed_src, height=400)
     st  
 #--------------------------
 
-showBldgs = st.checkbox('bldgs test')
-
-if showBldgs:
-     st.write('BUILDINGS!')
 
 #--------------------------
 #VIEWER 👀
 with viewer:
-    st.subheader("Latest Commit 👇")
-    commit2viewer(stream, cId)
+    st.subheader("NYC - 3d viewer 🗽")
+    commit2viewer(cId)
 #--------------------------
 
 #--------------------------
