@@ -82,10 +82,13 @@ with input:
     showWater = st.checkbox('Show Water 💧')
     showTrees = st.checkbox('Show Trees 🌳')
 
+    cIDs = []
+
     cId = ""
     if showBldgs:
         st.write('Buildings 🏢!')
         cId = "d4bc744cc2"
+        
     elif showRoads:
         st.write('Roads 🛣️!')
         cId = "fc2c326bee"
@@ -94,6 +97,7 @@ with input:
         cId = "d2ea061d60"
     elif showTrees:
         st.write('Trees 🌳')
+    cIDs.append(cId)
 
     #Selected commit ✅
     # for c in commits:
