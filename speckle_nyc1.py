@@ -3,7 +3,7 @@
 import streamlit
 from http import client
 import streamlit as st
-#import specklepy
+import specklepy
 from specklepy.api.client import SpeckleClient
 from specklepy.api.credentials import get_account_from_token
 #import pandas
