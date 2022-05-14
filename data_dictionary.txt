@@ -1,0 +1,34 @@
+geoid: the blockgroup id
+total_pop: the total population of the block group
+state: the state the blockgroup is in
+county: the county the blockgroup is in
+pctpov: the percent of people in poverty inside the blockgroup
+pctpoc: the percent of people of color inside the block group
+unemplrate: the unemployment rate inside of the block group
+medhhinc: the median household income of the block group
+dep_ratio: the dependency ratio (childrens + seniors / 18-64 adults)
+child_perc: the percent of children inside of the blockgroup
+seniorperc: the percent of seniors inside of the blockgroup
+treecanopy: the tree canopy percentage of the blockgroup (set to negative 1 if the source is 'ED')
+area: the area of the blockgroup in square kilometers
+source: the source of the tree canopy of the block group
+avg_temp: the average temperature of the blockgroup on a hot summer's day
+ua_name: the urbanized area the block group is located inside
+incorpname: the incorporated place the block group is located inside
+congressio:  the congressional district of the block group
+biome:  the biome of the blockgroup
+bgpopdense: the density of the blockgroup (total population over area)
+popadjust: the population adjustment factor (based on the population density)
+tc_gap: the tree canopy gap of the block group (goal minus canopy)
+tc_goal: the tree canopy goal of the block group (set to negative 1 if the source is 'ED')
+phys_hlth: the self reported physical health challenges of the people in the block group (a percentage)
+ment_hlth:  the self reported mental health challenges of people in the block group (a percentage)
+asthma: the self reported asthma challenges of people in the block group (a percentage)
+core_m: the self reported male coronary heart challenges of people in the block group (a percentage)
+core_w: the self reported female coronary heart challenges of people in the block group (a percentage)
+core_norm: the normalized total coronary challenges of people in the block group
+healthnorm: the normalized health index of the block group
+priority: the priority index of the block group
+tes: the tree equity score of the block group
+tesctyscor: the tree equity score of the incorporated place/municipality of the block group
+geometry: the geometry of the block group
