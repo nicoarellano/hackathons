@@ -117,7 +117,7 @@ with viewer:
 #VIEWER MAP 👀
 with viewerMap:
     st.subheader("Map 🗺️")
-    st.image("https://raw.githubusercontent.com/nicoarellano/hackathons/main/assets/ny-map.jpg?token=GHSAT0AAAAAABT7YK2CBK7LKMPVE2RI4RPKYT7KORQ", caption="NY MAP", width=700)
+    st.image("https://raw.githubusercontent.com/nicoarellano/hackathons/main/assets/ny-map.jpg?token=GHSAT0AAAAAABT7YK2CH3VQD6M3PPX4EIOEYT7K4IA", caption="NY MAP", width=700)
 #--------------------------
 
 #GRAPHS 📊
@@ -126,7 +126,7 @@ with viewerMap:
     leftCol, rightCol = st.columns(2)
 
     leftCol.write("Bronx County")
-    leftCol.image("https://raw.githubusercontent.com/nicoarellano/hackathons/main/assets/bronx_county_map.jpg?token=GHSAT0AAAAAABT7YK2CPQWUKYXHTU3QLSMQYT7KVPQ", caption="Bronx MAP", width=300)
+    leftCol.image("https://raw.githubusercontent.com/nicoarellano/hackathons/main/assets/bronx_county_map.jpg?token=GHSAT0AAAAAABT7YK2DSIZSHXSAJ5PVEN6CYT7K3RQ", caption="Bronx MAP", width=300)
     leftCol.write("New York County")
     leftCol. image("https://raw.githubusercontent.com/nicoarellano/hackathons/main/assets/new_york_county_map.jpg?token=GHSAT0AAAAAABT7YK2D7WWAB5AMPBUPM23IYT7KXHA", caption="NY MAP", width=300)
     rightCol.write("Niagara County")
