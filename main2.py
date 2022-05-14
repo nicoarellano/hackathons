@@ -3,6 +3,10 @@
 #import streamlit
 from http import client
 import streamlit as st
+#import pandas
+# import pandas as pd
+#import plotly express
+# import plotly.express as px
 #--------------------------
 
 #--------------------------
@@ -113,5 +117,22 @@ with viewer:
 #VIEWER MAP 👀
 with viewerMap:
     st.subheader("Map 🗺️")
-    st.image("https://raw.githubusercontent.com/nicoarellano/hackathons/main/ny-map.jpg?token=GHSAT0AAAAAABT7YK2DEKPK4AFRXHKBDDLSYT7JQ4A", caption="NY MAP", width=700)
+    st.image("https://raw.githubusercontent.com/nicoarellano/hackathons/main/assets/ny-map.jpg?token=GHSAT0AAAAAABT7YK2CBK7LKMPVE2RI4RPKYT7KORQ", caption="NY MAP", width=700)
 #--------------------------
+
+#GRAPHS 📊
+with viewerMap:
+    st.subheader("Graphs 📊")
+    leftCol, rightCol = st.columns(2)
+
+    leftCol.write("Bronx County")
+    leftCol.image("https://raw.githubusercontent.com/nicoarellano/hackathons/main/assets/bronx_county_map.jpg?token=GHSAT0AAAAAABT7YK2CPQWUKYXHTU3QLSMQYT7KVPQ", caption="Bronx MAP", width=300)
+    leftCol.write("New York County")
+    leftCol. image("https://raw.githubusercontent.com/nicoarellano/hackathons/main/assets/new_york_county_map.jpg?token=GHSAT0AAAAAABT7YK2D7WWAB5AMPBUPM23IYT7KXHA", caption="NY MAP", width=300)
+    rightCol.write("Niagara County")
+    rightCol.image("https://raw.githubusercontent.com/nicoarellano/hackathons/main/assets/niagara_county_map.jpg?token=GHSAT0AAAAAABT7YK2DKDFXLHEGAD5WEJSGYT7KX3A", caption="Niagara MAP", width=300)
+    rightCol.write("Orange County")
+    rightCol.image("https://raw.githubusercontent.com/nicoarellano/hackathons/main/assets/orange_county_map.jpg?token=GHSAT0AAAAAABT7YK2C7XPM4BKMJSEI6VDKYT7KYIQ", caption="Orange MAP", width=300)
+
+#--------------------------
+
