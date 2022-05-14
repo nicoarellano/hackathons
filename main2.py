@@ -117,7 +117,7 @@ with viewer:
 #VIEWER MAP 👀
 with viewerMap:
     st.subheader("Map 🗺️")
-    st.image("https://raw.githubusercontent.com/nicoarellano/hackathons/main/assets/ny-map.jpg?token=GHSAT0AAAAAABT7YK2CH3VQD6M3PPX4EIOEYT7K4IA", caption="NY MAP", width=700)
+    st.image("assets/ny-map.jpg", caption="NY MAP", width=700)
 #--------------------------
 
 #GRAPHS 📊
