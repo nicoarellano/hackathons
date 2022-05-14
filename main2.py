@@ -113,5 +113,5 @@ with viewer:
 #VIEWER MAP 👀
 with viewerMap:
     st.subheader("Map 🗺️")
-    st.image("https://github.com/nicoarellano/hackathons/blob/main/ny-map.jpg", caption="NY MAP", width=700)
+    st.image(Image.open("https://github.com/nicoarellano/hackathons/blob/main/ny-map.jpg"), caption="NY MAP", width=700)
 #--------------------------
