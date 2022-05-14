@@ -128,11 +128,8 @@ with viewerMap:
     leftCol.write("Bronx County")
     leftCol.image("https://raw.githubusercontent.com/nicoarellano/hackathons/main/assets/bronx_county_map.jpg?token=GHSAT0AAAAAABT7YK2DSIZSHXSAJ5PVEN6CYT7K3RQ", caption="Bronx MAP", width=300)
     leftCol.write("New York County")
-    leftCol. image("https://raw.githubusercontent.com/nicoarellano/hackathons/main/assets/new_york_county_map.jpg?token=GHSAT0AAAAAABT7YK2D7WWAB5AMPBUPM23IYT7KXHA", caption="NY MAP", width=300)
+    leftCol. image("https://raw.githubusercontent.com/nicoarellano/hackathons/main/assets/new_york_county_map.jpg?token=GHSAT0AAAAAABT7YK2CXSCOT4NKZKKLAQKSYT7LB6Q", caption="NY MAP", width=300)
     rightCol.write("Niagara County")
-    rightCol.image("https://raw.githubusercontent.com/nicoarellano/hackathons/main/assets/niagara_county_map.jpg?token=GHSAT0AAAAAABT7YK2DKDFXLHEGAD5WEJSGYT7KX3A", caption="Niagara MAP", width=300)
+    rightCol.image("https://github.com/nicoarellano/hackathons/blob/main/assets/niagara_county_map.jpg?raw=true", caption="Niagara MAP", width=300)
     rightCol.write("Orange County")
-    rightCol.image("https://raw.githubusercontent.com/nicoarellano/hackathons/main/assets/orange_county_map.jpg?token=GHSAT0AAAAAABT7YK2C7XPM4BKMJSEI6VDKYT7KYIQ", caption="Orange MAP", width=300)
-
-#--------------------------
-
+    rightCol.image("https://github.com/nicoarellano/hackathons/blob/main/assets/orange_county_map.jpg?raw=true", caption="Orange MAP", width=300)
