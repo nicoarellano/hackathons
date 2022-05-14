@@ -3,6 +3,10 @@
 #import streamlit
 from http import client
 import streamlit as st
+#import pandas
+# import pandas as pd
+#import plotly express
+# import plotly.express as px
 #--------------------------
 
 #--------------------------
@@ -113,5 +117,19 @@ with viewer:
 #VIEWER MAP 👀
 with viewerMap:
     st.subheader("Map 🗺️")
-    st.image("https://github.com/nicoarellano/hackathons/blob/main/ny-map.jpg", caption="NY MAP", width=700)
+    st.image("assets/ny-map.jpg", caption="NY MAP", width=700)
 #--------------------------
+
+#GRAPHS 📊
+with viewerMap:
+    st.subheader("Graphs 📊")
+    leftCol, rightCol = st.columns(2)
+
+    leftCol.write("Bronx County")
+    leftCol.image("assets/bronx_county_map.jpg", caption="Bronx MAP", width=300)
+    leftCol.write("New York County")
+    leftCol. image("assets/new_york_county_map.jpg", caption="NY MAP", width=300)
+    rightCol.write("Niagara County")
+    rightCol.image("assets/niagara_county_map.jpg", caption="Niagara MAP", width=300)
+    rightCol.write("Orange County")
+    rightCol.image("assets/orange_county_map.jpg", caption="Orange MAP", width=300)
