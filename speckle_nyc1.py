@@ -1,10 +1,9 @@
 #--------------------------
 #IMPORTING LIBRARIES
-import streamlit
+#import streamlit
 from http import client
 import streamlit as st
-#pip install specklepy
-import specklepy
+# import specklepy
 from specklepy.api.client import SpeckleClient
 from specklepy.api.credentials import get_account_from_token
 #import pandas
@@ -14,11 +13,9 @@ import plotly.express as px
 #--------------------------
 
 #--------------------------
-
-
 #PAGE CONFIG
 st.set_page_config(
-    page_title= "NYC - Baby Radish",
+    page_title= "NYC - Baby Daikon Radish",
     page_icon="🗽"
 )
 #--------------------------
@@ -28,6 +25,7 @@ st.set_page_config(
 header = st.container()
 input = st.container()
 viewer = st.container()
+viewerMap = st.container()
 report = st.container()
 graphs = st.container()
 #--------------------------
@@ -36,7 +34,7 @@ graphs = st.container()
 #HEADER
 #Page Header
 with header:
-    st.title("NYC - Baby Radish 🗽🥕")
+    st.title("NYC - Baby Daikon Radish 🗽🥕")
 #about app
 
 with header.expander("About this app🔽", expanded=True):
@@ -48,7 +46,7 @@ with header.expander("About this app🔽", expanded=True):
 #--------------------------
 #INPUTS
 with input:
-    st.subheader("Add Layers")
+    st.subheader("Add Layers 🍰")
 
     #------------
     #Columns for inputs
@@ -81,38 +79,22 @@ with input:
     showBldgs = st.checkbox('Show Buildings 🏢')
     showRoads = st.checkbox('Show Roads 🛣️')
     showWater = st.checkbox('Show Water 💧')
-    showTrees = st.checkbox('Show Trees 🌳')
-
-    cIDs = []
-
+    # showTrees = st.checkbox('Show Trees 🌳')
+    cIds = []
     cId = ""
     if showBldgs:
         st.write('Buildings 🏢!')
         cId = "d4bc744cc2"
-        
-    elif showRoads:
+        cIds.append(cId)
+    if showRoads:
         st.write('Roads 🛣️!')
         cId = "fc2c326bee"
-    elif showWater:
+        cIds.append(cId)
+    if showWater:
         st.write('Water 💧!')
         cId = "d2ea061d60"
-    elif showTrees:
-        st.write('Trees 🌳')
-    cIDs.append(cId)
+        cIds.append(cId)
 
-    #Selected commit ✅
-    # for c in commits:
-    #     if c.branchName == cName:
-    #         cId = c.id
-    #         break
-    # commit = commits(cName)[0]
-    # st.write(cName)
-    # st.write(cId)
-    # st.write(commits)
-
-    # st.write(commits)
-    #------------
-    
 #--------------------------
 #DEFINITIONS
 #Python list to markdown list
@@ -125,24 +107,39 @@ def listToMarkdown(list, column):
 def commit2viewer(cId):
     if cId == "":
         embed_src = "https://speckle.xyz/embed?stream=c463c6f6bd&commit=6acb9b670f"
-    else:
-        embed_src = "https://speckle.xyz/embed?stream=c463c6f6bd&commit=6acb9b670f&overlay=" + cId
+    elif len(cIds) == 1:
+        embed_src = "https://speckle.xyz/embed?stream=c463c6f6bd&commit=6acb9b670f&overlay=" + cIds[0]
+    elif len(cIds) == 2:
+        embed_src = "https://speckle.xyz/embed?stream=c463c6f6bd&commit=6acb9b670f&overlay=" + cIds[0] + "," + cIds[1]
+    elif len(cIds) == 3:
+        embed_src = "https://speckle.xyz/embed?stream=c463c6f6bd&commit=6acb9b670f&overlay=" + cIds[0] + "," + cIds[1] + "," + cIds[2]
     return st.components.v1.iframe(src=embed_src, height=400)
-    st  
 #--------------------------
-
 
 #--------------------------
 #VIEWER 👀
 with viewer:
-    st.subheader("NYC - 3d viewer 🗽")
+    st.subheader("NYC - Speckle viewer 🗽🟦👀")
     commit2viewer(cId)
+#--------------------------
+
+#VIEWER MAP 👀
+with viewerMap:
+    st.subheader("Map 🗺️")
+
+    st.image("./ny-map.jpg", caption="NY MAP", width=700)
+    # url = 'http://babydaikonradish.rf.gd/?i=1'
+    # r = requests.get(url)
+    # st.components.v1.iframe(src='', height=400)
+    # r.text
+
+    # st.write(my_map)
 #--------------------------
 
 #--------------------------
 #REPORT
 with report:
-    st.subheader("Statistics")
+    st.subheader("Statistics 🔢")
     #------------
     #Columns for cards
     branchCol, childrenCol, connectorCol, contributorCol = st.columns(4)
@@ -159,7 +156,7 @@ with report:
     #Children Card 💳
     totalOfChildren = sum(c.totalChildrenCount for c in commits)
     childrenCol.metric(label="Number of elements", value = totalOfChildren)
-    numOfChildren = [(str(c.totalChildrenCount) + " (" + c.branchName + ")") for c in commits]
+    numOfChildren = [(str(c.totalChildrenCount) + " (" + c.branchName + ")") for c in commits[0:-17]]
     listToMarkdown(numOfChildren, childrenCol)
     #------------
 
@@ -189,7 +186,7 @@ with report:
 #--------------------------
 #GRAPHS
 with graphs:
-    st.subheader("Graphs")
+    st.subheader("Graphs 📊")
     #columns for charts
     branch_graph_col, connector_graph_col, collaborator_graph_col = st.columns([2,1,1])
 
@@ -206,6 +203,7 @@ with graphs:
         height = 220,
         margin = dict(l=1, r=1, t=1, b=1)
     )
+    branch_graph_col.write("Number of commits per building:")
     branch_graph_col.plotly_chart(branch_count_graph, use_container_width=True)
 
 
@@ -227,6 +225,7 @@ with graphs:
         height = 200,
         margin=dict(l=2,r=2,t=2,b=2)
     )
+    connector_graph_col.write("Origin of commits:")
     connector_graph_col.plotly_chart(appsFig, use_container_width=True)
     #------------
 
@@ -241,6 +240,7 @@ with graphs:
         height = 200,
         margin=dict(l=2,r=2,t=2,b=2)
     )
+    collaborator_graph_col.write("Author of commit:")
     collaborator_graph_col.plotly_chart(authorFig, use_container_width=True)
     #------------
 
@@ -264,7 +264,6 @@ with graphs:
         margin=dict(l=2,r=2,t=2,b=2)
     )
     st.plotly_chart(dateFig, use_container_width=True)
-    st.write(commits)
     #------------
 
 #--------------------------
