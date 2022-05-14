@@ -37,9 +37,26 @@ with header:
     st.title("NYC - Baby Daikon Radish 🗽🥕")
 #about app
 
-with header.expander("About this app🔽", expanded=True):
+with header.expander("About this app🔽", expanded=False):
     st.markdown("""
-    Compare APIs, 3d models, and 3d maps of newyourk blah blah...
+    What was the inspiration behind the Hack?
+    - Bringing together data science and architecture to allow a richer interpretation of select data sets
+    - Connecting data points to BIM and GIS using the browser
+    - Investigating graphical environments to make building data more accessible and test it against non building related open data sources\n
+    What does the hack do ? How was it built?
+    - Data is organized from a number of sources including environmental, social/political, and architectural
+    - Browser hosts the model that visualizes the data points
+    - Data from buildings and surrounding are parsed and visualized through text and graphs
+    - The hack was built from open data sources collected from New York databases, parsed and graphed in Kaggle, then mapped in QGIS and viewed in the browser using leaflet.js. The buildings were integrated using openstreetmaps to blender, then shared through Speckle.\n
+    What technology was involved in particular?
+    - Speckle
+    - Leaflet
+    - Python
+    - Kaggle
+    - Javascript
+    Accomplishments that you're proud of?
+    - Working as a team to decipher complex data sets and organize them through architecture and geography using open source software
+    - Bringing together data science and architecture
     """)
 #--------------------------
 
