@@ -99,6 +99,7 @@ showWater = st.sidebar.checkbox('Show Water 💧', value='Show Water 💧')
 # --------------------------
 # RADARS
 with radars:
+
     # ------------
     # 0.1 Geo Data
     ny_counties = gpd.read_file('./newyork-counties.geojson')
@@ -253,7 +254,6 @@ with radars:
     # ny_geo_final['athma_challenge'].value_counts()
 
     # Correlation Heatmap
-    st.subheader('Social & Environmental Equity Correlations🌳')
     st.write('1.0 : Positive correlation between the two x,y categories')
     st.write('0.0: Zero correlation between the two x,y categories')
     st.write('-1.0: Negative correlation between the two x,y categoris')
@@ -263,10 +263,10 @@ with radars:
     mask = np.zeros_like(corr)
     mask[np.triu_indices_from(mask)] = True
     with sns.axes_style("white"):
-        f, ax = plt.subplots(figsize=(35, 20))
+        f, ax = plt.subplots(figsize=(45, 30))
         ax = sns.heatmap(corr, mask=mask, square=False,
                          annot=True, fmt='.1f', annot_kws={"fontsize": 15})
-    sns.set(font_scale=1.4)
+    sns.set(font_scale=3)
     st.pyplot(f)
 
     # ------------
@@ -289,6 +289,18 @@ with radars:
     # ------------
     # ------------
     st.subheader('Radar Chart')
+    st.write(
+        "- dependency_ratio: the dependency ratio(childrens + seniors / 18-64 adults")
+    st.write(
+        "- physical_health: the self reported physical health challenges of the people in the block group(a percentage")
+    st.write(
+        "- mental_health:  the self reported mental health challenges of people in the block group(a percentage")
+    st.write(
+        "- asthma challenges: the self reported asthma challenges of people in the block group(a percentage")
+    st.write(
+        "- heart challenges: the self reported coronary heart challenges of people in the block group(a percentage")
+    st.write("- health challenges: the normalized health index of the block group")
+    st.write("- tree_equity_score: the tree equity score of the block group")
     # Output of Dropdown
     if selected_county == 'New York County':
         # st.write('Show New York map')
