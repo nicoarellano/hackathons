@@ -3,10 +3,6 @@
 #import streamlit
 from http import client
 import streamlit as st
-#import pandas
-import pandas as pd
-#import plotly express
-import plotly.express as px
 #--------------------------
 
 #--------------------------
