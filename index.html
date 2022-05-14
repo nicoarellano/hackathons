@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="data:," />
+	
+	<title>Choropleth Tutorial - Leaflet</title>
+	
+	<!-- <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" /> -->
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+		.leaflet-container {
+			height: 400px;
+			width: 600px;
+			max-width: 100%;
+			max-height: 100%;
+		}
+	</style>
+
+	
+</head>
+<body>
+
+<div id='map'></div>
+
+<!-- <script type="text/javascript" src="us-states.js"></script> -->
+<script type="text/javascript" src="ny_geo_final-2.js"></script>
+
+<script type="text/javascript">
+
+	var map = L.map('map').setView([37.8, -96], 4);
+
+	var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+		maxZoom: 18,
+		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		id: 'mapbox/light-v9',
+		tileSize: 512,
+		zoomOffset: -1
+	}).addTo(map);
+
+	// get color depending on population density value
+	function getColor(d) {
+		return d > 90 ? '#800026' :
+			d > 85  ? '#BD0026' :
+			d > 80  ? '#E31A1C' :
+			d > 75  ? '#FC4E2A' :
+			d > 70   ? '#FD8D3C' :
+			d > 65   ? '#FEB24C' :
+			d > 60   ? '#FED976' : '#FFEDA0';
+	}
+
+	// // get color depending on population density value
+	// function getColor(d) {
+	// 	return d > 1000 ? '#800026' :
+	// 		d > 500  ? '#BD0026' :
+	// 		d > 200  ? '#E31A1C' :
+	// 		d > 100  ? '#FC4E2A' :
+	// 		d > 50   ? '#FD8D3C' :
+	// 		d > 20   ? '#FEB24C' :
+	// 		d > 10   ? '#FED976' : '#FFEDA0';
+	// }
+
+  // 	// get color depending on population density value
+	// function getColor(d) {
+	// 	return d > 1000000 ? '#800026' :
+	// 		d > 500000  ? '#BD0026' :
+	// 		d > 200000  ? '#E31A1C' :
+	// 		d > 100000  ? '#FC4E2A' :
+	// 		d > 50000   ? '#FD8D3C' :
+	// 		d > 10000   ? '#FEB24C' :
+	// 		d > 1000   ? '#FED976' : '#FFEDA0';
+	// }
+
+  
+	function style(feature) {
+		return {
+			weight: 2,
+			opacity: 1,
+			color: 'white',
+			dashArray: '3',
+			fillOpacity: 0.7,
+			fillColor: getColor(feature.properties.tree_equity_score)
+		};
+	}
+  
+
+	// /* global statesData */
+	// var geojson = L.geoJson(statesData1, {
+	// 	style: style,
+	// }).addTo(map);
+
+  	/* global statesData */
+	var geojson = L.geoJson(trees2, {
+		style: style,
+	}).addTo(map);
+
+</script>
+
+
+
+</body>
+</html>
