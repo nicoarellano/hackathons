@@ -12,7 +12,7 @@ import streamlit as st
 #--------------------------
 #PAGE CONFIG
 st.set_page_config(
-    page_title= "New Your State - Best Neighbourhood Finder",
+    page_title= "NYC - Best Neighbourhood Finder",
     page_icon="🗽"
 )
 #--------------------------
@@ -31,7 +31,7 @@ graphs = st.container()
 #HEADER
 #Page Header
 with header:
-    st.title("NYC - Baby Daikon Radish 🗽🥕")
+    st.title("New York State - Best Neighbourhood Finder" 🗽🏘️")
 #about app
 
 with header.expander("About this app🔽", expanded=False):
