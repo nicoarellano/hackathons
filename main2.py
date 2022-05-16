@@ -12,7 +12,7 @@ import streamlit as st
 #--------------------------
 #PAGE CONFIG
 st.set_page_config(
-    page_title= "NYC - Baby Daikon Radish",
+    page_title= "New Your State - Best Neighbourhood Finder",
     page_icon="🗽"
 )
 #--------------------------
@@ -54,6 +54,10 @@ with header.expander("About this app🔽", expanded=False):
     Accomplishments that you're proud of?
     - Working as a team to decipher complex data sets and organize them through architecture and geography using open source software
     - Bringing together data science and architecture
+    - Uncover meaningful insights from open data sources
+        - US Censs Bureau 
+        - OPEN NY
+        - Tree Equity Score
     """)
 #--------------------------
 
@@ -114,9 +118,10 @@ with viewer:
     commit2viewer(cId)
 #--------------------------
 
-#VIEWER MAP 👀
+#Tree Equity Score Map 👀
 with viewerMap:
-    st.subheader("Map 🗺️")
+    st.subheader("Tree Equity Score Map 🌳🗺️")
+    st.write("Red: Trees are accessible to diverse demographics (ie. people of color, income level, education level, etc.)\n Yellow: Trees access is not easily accessible by diverse demographics." )
     st.image("assets/ny-map.jpg", caption="NY MAP", width=700)
 #--------------------------
 
