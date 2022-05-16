@@ -31,7 +31,7 @@ graphs = st.container()
 #HEADER
 #Page Header
 with header:
-    st.title("New York State \n Neighbourhood Finder 🗽🏘️")
+    st.title("New York State | Neighbourhood Finder 🗽🏘️")
 #about app
 
 with header.expander("About this app🔽", expanded=False):
